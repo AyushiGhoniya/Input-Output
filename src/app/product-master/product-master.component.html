@@ -1,0 +1,38 @@
+<app-product-details (sendToParent)="getProductsFromChild($event)"></app-product-details>
+<table border="1px solid black" style="width: 100%;">
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Stock Update</th>
+        <th>Total Price</th>
+    </tr>
+    <tr *ngFor="let product of products">
+        <td>{{ product.id }}</td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.stock }}</td>
+        <!-- <td *ngIf="product.stock <= 10" style="background-color:  rgb(212, 42, 42);">
+            <app-stock-status [product]="product"></app-stock-status>
+        </td>
+        <td *ngIf="product.stock >= 11 && product.stock <= 20" style="background-color: yellow;">
+            <app-stock-status [product]="product"></app-stock-status>
+        </td>
+        <td *ngIf="product.stock > 20" style="background-color: green;">
+            <app-stock-status [product]="product"></app-stock-status>
+        </td> -->
+        <td>
+            <app-stock-status [product]="product"></app-stock-status>
+        </td>
+        <td>{{ product.price * product.stock }}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <th>Total</th>
+        <th>{{ getTotalPrice() }}</th>
+        <th>{{ getTotalStock() }}</th>
+        <th></th>
+        <th>{{ getGrandTotal() }}</th>
+    </tr>
+</table>
